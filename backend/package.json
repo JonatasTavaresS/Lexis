@@ -1,0 +1,40 @@
+{
+  "name": "lexis",
+  "version": "1.0.0",
+  "description": "Sistema de Gerenciamento de Bibliotecas",
+  "main": "index.ts",
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonatasTavaresS/Lexis.git"
+  },
+  "keywords": [
+    "express",
+    "sequelize",
+    "mysql",
+    "ts-node",
+    "typescript"
+  ],
+  "author": "Jônatas Tavares dos Santos",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/JonatasTavaresS/Lexis/issues"
+  },
+  "homepage": "https://github.com/JonatasTavaresS/Lexis#readme",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mysql2": "^3.12.0",
+    "sequelize": "^6.37.5"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^6.1.1",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
+}
