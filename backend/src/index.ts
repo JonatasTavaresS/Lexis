@@ -14,6 +14,10 @@ app.get("/api/books/:id", BookController.getBook);
 app.put("/api/books/:id", BookController.updateBook);
 app.delete("/api/books/:id", BookController.deleteBook);
 
+app.get("/healthz", (_, res) => {
+  res.status(200).send('OK');
+});
+
 sequelize.sync({ alter: true }).then(() => {
   console.log("Database connected!");
   app.listen(3000, () => console.log("Server running on port 3000"));
