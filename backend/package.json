@@ -25,12 +25,14 @@
   },
   "homepage": "https://github.com/JonatasTavaresS/Lexis#readme",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "mysql2": "^3.12.0",
     "sequelize": "^6.37.5"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/dotenv": "^6.1.1",
     "@types/express": "^5.0.0",
     "@types/node": "^22.13.1",

@@ -2,6 +2,7 @@ import * as dotenv from "dotenv";
 import * as express from "express";
 import sequelize from "./config/database";
 import { BookController } from "./controllers/bookController";
+import { UserController } from "./controllers/userController";
 
 dotenv.config();
 
@@ -13,6 +14,13 @@ app.get("/api/books", BookController.getAllBooks);
 app.get("/api/books/:id", BookController.getBook);
 app.put("/api/books/:id", BookController.updateBook);
 app.delete("/api/books/:id", BookController.deleteBook);
+
+app.post("/api/users", UserController.createUser);
+app.get("/api/users", UserController.getAllUsers);
+app.get("/api/users/:id", UserController.getUser);
+app.get("/api/users/email/:email", UserController.getUserByEmail);
+app.put("/api/users/:id", UserController.updateUser);
+app.delete("/api/users/:id", UserController.deleteUser);
 
 app.get("/healthz", (_, res) => {
   res.status(200).send('OK');
