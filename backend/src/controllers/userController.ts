@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { UserService } from "../services/userService";
 import { UserRole } from "../models/User";
+import { UserService } from "../services/userService";
 
 const userService = new UserService();
 
@@ -20,7 +20,7 @@ export class UserController {
         }
     }
 
-    static async getAllUsers(req: Request, res: Response) {
+    static async getAllUsers(_: Request, res: Response) {
         try {
             const users = await userService.getAllUsers();
             res.status(200).json(users);

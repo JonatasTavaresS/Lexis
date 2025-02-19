@@ -34,7 +34,7 @@ export class BookController {
         }
     }
 
-    static async getAllBooks(req: Request, res: Response) {
+    static async getAllBooks(_: Request, res: Response) {
         try {
             const books = await bookService.getAllBooks();
             res.status(200).json(books);

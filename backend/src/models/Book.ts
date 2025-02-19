@@ -53,6 +53,7 @@ Book.init(
         publishedYear: {
             type: DataTypes.INTEGER,
             allowNull: true,
+            field: 'published_year',
         },
         language: {
             type: DataTypes.STRING,
@@ -66,6 +67,7 @@ Book.init(
         coverImageUrl: {
             type: DataTypes.STRING,
             allowNull: true,
+            field: 'cover_image_url',
         },
     },
     {
