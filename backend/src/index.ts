@@ -1,10 +1,11 @@
 import dotenv from "dotenv";
 import express from "express";
 import sequelize from "./config/database";
+import setupSwagger from "./config/swagger";
 import bookCopyRoutes from "./routes/bookCopyRoutes";
 import bookRoutes from "./routes/bookRoutes";
-import userRoutes from "./routes/userRoutes";
 import loanRoutes from "./routes/loanRoutes";
+import userRoutes from "./routes/userRoutes";
 
 dotenv.config();
 
@@ -19,6 +20,8 @@ app.use("/api/loans", loanRoutes);
 app.get("/healthz", (_, res) => {
   res.status(200).send('OK');
 });
+
+setupSwagger(app);
 
 sequelize.sync({ alter: true }).then(() => {
   console.log("Database connected!");

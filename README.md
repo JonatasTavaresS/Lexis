@@ -90,3 +90,8 @@ Se você prefere usar o Podman para rodar o projeto em um contêiner, siga as in
     podman run -p 3000:3000 lexis-backend
     ```
     Isso vai fazer o contêiner rodar no [localhost:3000](http://localhost:3000).
+
+## 📊 Documentação da API
+
+A documentação da API está disponível através do *Swagger* em:
+- http://localhost:3000/api-docs
