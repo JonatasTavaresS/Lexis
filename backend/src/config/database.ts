@@ -17,6 +17,10 @@ const sequelize = new Sequelize({
             rejectUnauthorized: false,
         }
     },
+    define: {
+        underscored: true,
+        freezeTableName: true,
+    }
 });
 
 export default sequelize;

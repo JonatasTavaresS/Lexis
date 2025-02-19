@@ -50,6 +50,7 @@ BookCopy.init(
                 model: Book,
                 key: 'id',
             },
+            field: 'book_id',
         },
         status: {
             type: DataTypes.ENUM,

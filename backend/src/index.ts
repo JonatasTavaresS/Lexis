@@ -4,6 +4,7 @@ import sequelize from "./config/database";
 import bookCopyRoutes from "./routes/bookCopyRoutes";
 import bookRoutes from "./routes/bookRoutes";
 import userRoutes from "./routes/userRoutes";
+import loanRoutes from "./routes/loanRoutes";
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use("/api/books", bookRoutes);
 app.use("/api/bookCopies", bookCopyRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/loans", loanRoutes);
 
 app.get("/healthz", (_, res) => {
   res.status(200).send('OK');
