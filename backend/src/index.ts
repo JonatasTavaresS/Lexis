@@ -29,5 +29,8 @@ sequelize.sync({ alter: true }).then(() => {
   console.log("Database connected!");
   app.listen(3000, () => console.log("Server running on port 3000"));
 }).catch((error) => {
+  if (process.env.NODE_ENV === 'test') { return; }
   console.error("Error connecting to the database:", error);
 });
+
+export default app;
