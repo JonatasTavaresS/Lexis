@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import express from "express";
 import sequelize from "./config/database";
 import setupSwagger from "./config/swagger";
+import authRoutes from "./routes/authRoutes";
 import bookCopyRoutes from "./routes/bookCopyRoutes";
 import bookRoutes from "./routes/bookRoutes";
 import loanRoutes from "./routes/loanRoutes";
@@ -16,6 +17,7 @@ app.use("/api/books", bookRoutes);
 app.use("/api/bookCopies", bookCopyRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/loans", loanRoutes);
+app.use("/api/auth", authRoutes);
 
 app.get("/healthz", (_, res) => {
   res.status(200).send('OK');

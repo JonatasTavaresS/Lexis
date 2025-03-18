@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { BookCopyController } from "../controllers/bookCopyController";
-
+import { authenticate } from '../middlewares/authMiddleware';
 /**
  * @swagger
  * tags:
@@ -53,7 +53,7 @@ const router = Router();
  *       400:
  *         description: Erro nos parâmetros enviados
  */
-router.post("/", BookCopyController.createBookCopy);
+router.post("/", authenticate, BookCopyController.createBookCopy);
 
 /**
  * @swagger
@@ -66,7 +66,7 @@ router.post("/", BookCopyController.createBookCopy);
  *       200:
  *         description: Lista de cópias de livros recuperada com sucesso
  */
-router.get("/", BookCopyController.getAllBookCopies);
+router.get("/", authenticate, BookCopyController.getAllBookCopies);
 
 /**
  * @swagger
@@ -88,7 +88,7 @@ router.get("/", BookCopyController.getAllBookCopies);
  *       404:
  *         description: Cópia de livro não encontrada
  */
-router.get("/:id", BookCopyController.getBookCopy);
+router.get("/:id", authenticate, BookCopyController.getBookCopy);
 
 /**
  * @swagger
@@ -110,7 +110,7 @@ router.get("/:id", BookCopyController.getBookCopy);
  *       404:
  *         description: Nenhuma cópia encontrada para este livro
  */
-router.get("/book/:bookId", BookCopyController.getBookCopiesByBookId);
+router.get("/book/:bookId", authenticate, BookCopyController.getBookCopiesByBookId);
 
 /**
  * @swagger
@@ -149,7 +149,7 @@ router.get("/book/:bookId", BookCopyController.getBookCopiesByBookId);
  *       404:
  *         description: Cópia de livro não encontrada
  */
-router.put("/:id", BookCopyController.updateBookCopy);
+router.put("/:id", authenticate, BookCopyController.updateBookCopy);
 
 /**
  * @swagger
@@ -171,7 +171,7 @@ router.put("/:id", BookCopyController.updateBookCopy);
  *       404:
  *         description: Cópia de livro não encontrada
  */
-router.delete("/:id", BookCopyController.deleteBookCopy);
+router.delete("/:id", authenticate, BookCopyController.deleteBookCopy);
 
 /**
  * @swagger
@@ -193,6 +193,6 @@ router.delete("/:id", BookCopyController.deleteBookCopy);
  *       404:
  *         description: Nenhuma cópia encontrada para este livro
  */
-router.get("/book/:bookId", BookCopyController.getBookCopiesByBookId);
+router.get("/book/:bookId", authenticate, BookCopyController.getBookCopiesByBookId);
 
 export default router;

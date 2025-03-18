@@ -1,4 +1,4 @@
-import * as bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import { UserRole } from "../models/User";
 import { UserRepository } from "../repositories/userRepository";
 

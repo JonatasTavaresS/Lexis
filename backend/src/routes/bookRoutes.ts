@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { BookController } from "../controllers/bookController";
+import { authenticate } from '../middlewares/authMiddleware';
 
 /**
  * @swagger
@@ -73,7 +74,7 @@ router.post("/", BookController.createBook);
  *       200:
  *         description: Lista de livros recuperada com sucesso
  */
-router.get("/", BookController.getAllBooks);
+router.get("/", authenticate, BookController.getAllBooks);
 
 /**
  * @swagger
@@ -95,7 +96,7 @@ router.get("/", BookController.getAllBooks);
  *       404:
  *         description: Livro não encontrado
  */
-router.get("/:id", BookController.getBook);
+router.get("/:id", authenticate, BookController.getBook);
 
 /**
  * @swagger
@@ -146,7 +147,7 @@ router.get("/:id", BookController.getBook);
  *       404:
  *         description: Livro não encontrado
  */
-router.put("/:id", BookController.updateBook);
+router.put("/:id", authenticate, BookController.updateBook);
 
 /**
  * @swagger
@@ -168,6 +169,6 @@ router.put("/:id", BookController.updateBook);
  *       404:
  *         description: Livro não encontrado
  */
-router.delete("/:id", BookController.deleteBook);
+router.delete("/:id", authenticate, BookController.deleteBook);
 
 export default router;

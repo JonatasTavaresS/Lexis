@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { LoanController } from "../controllers/loanController";
+import { authenticate } from '../middlewares/authMiddleware';
 
 /**
  * @swagger
@@ -43,7 +44,7 @@ const router = Router();
  *       400:
  *         description: Dados inválidos
  */
-router.post("/", LoanController.createLoan);
+router.post("/", authenticate, LoanController.createLoan);
 
 /**
  * @swagger
@@ -56,7 +57,7 @@ router.post("/", LoanController.createLoan);
  *       200:
  *         description: Lista de empréstimos retornada com sucesso
  */
-router.get("/", LoanController.getAllLoans);
+router.get("/", authenticate, LoanController.getAllLoans);
 
 /**
  * @swagger
@@ -78,7 +79,7 @@ router.get("/", LoanController.getAllLoans);
  *       404:
  *         description: Empréstimo não encontrado
  */
-router.get("/:id", LoanController.getLoan);
+router.get("/:id", authenticate, LoanController.getLoan);
 
 /**
  * @swagger
@@ -117,7 +118,7 @@ router.get("/:id", LoanController.getLoan);
  *       404:
  *         description: Empréstimo não encontrado
  */
-router.put("/:id", LoanController.updateLoan);
+router.put("/:id", authenticate, LoanController.updateLoan);
 
 /**
  * @swagger
@@ -139,7 +140,7 @@ router.put("/:id", LoanController.updateLoan);
  *       404:
  *         description: Empréstimo não encontrado
  */
-router.delete("/:id", LoanController.deleteLoan);
+router.delete("/:id", authenticate, LoanController.deleteLoan);
 
 /**
  * @swagger
@@ -161,7 +162,7 @@ router.delete("/:id", LoanController.deleteLoan);
  *       404:
  *         description: Nenhum empréstimo encontrado para este usuário
  */
-router.get("/user/:userId", LoanController.getLoansByUserId);
+router.get("/user/:userId", authenticate, LoanController.getLoansByUserId);
 
 /**
  * @swagger
@@ -183,7 +184,7 @@ router.get("/user/:userId", LoanController.getLoansByUserId);
  *       404:
  *         description: Nenhum empréstimo encontrado para esta cópia do livro
  */
-router.get("/book/:bookCopyId", LoanController.getLoansByBookCopyId);
+router.get("/book/:bookCopyId", authenticate, LoanController.getLoansByBookCopyId);
 
 /**
  * @swagger
@@ -206,6 +207,6 @@ router.get("/book/:bookCopyId", LoanController.getLoansByBookCopyId);
  *       404:
  *         description: Nenhum empréstimo encontrado para o status fornecido
  */
-router.put("/status/:status", LoanController.getLoansByStatus);
+router.put("/status/:status", authenticate, LoanController.getLoansByStatus);
 
 export default router;

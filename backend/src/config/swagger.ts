@@ -12,11 +12,11 @@ const options: Options = {
         },
         servers: [
             {
-                url: 'https://lexis-backend.onrender.com',
+                url: 'https://lexis-backend.onrender.com/api',
                 description: 'Servidor de Produção',
             },
             {
-                url: 'http://localhost:3000',
+                url: 'http://localhost:3000/api',
                 description: 'Servidor de Desenvolvimento',
             },
         ],

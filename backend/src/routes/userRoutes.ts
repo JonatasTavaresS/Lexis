@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { UserController } from "../controllers/userController";
+import { authenticate } from '../middlewares/authMiddleware';
 
 /**
  * @swagger
@@ -52,7 +53,7 @@ const router = Router();
  *       400:
  *         description: Erro nos parâmetros enviados
  */
-router.post("/", UserController.createUser);
+router.post("/", authenticate, UserController.createUser);
 
 /**
  * @swagger
@@ -65,7 +66,7 @@ router.post("/", UserController.createUser);
  *       200:
  *         description: Lista de usuários recuperada com sucesso
  */
-router.get("/", UserController.getAllUsers);
+router.get("/", authenticate, UserController.getAllUsers);
 
 /**
  * @swagger
@@ -87,7 +88,7 @@ router.get("/", UserController.getAllUsers);
  *       404:
  *         description: Usuário não encontrado
  */
-router.get("/:id", UserController.getUser);
+router.get("/:id", authenticate, UserController.getUser);
 
 /**
  * @swagger
@@ -109,7 +110,7 @@ router.get("/:id", UserController.getUser);
  *       404:
  *         description: Usuário não encontrado
  */
-router.get("/email/:email", UserController.getUserByEmail);
+router.get("/email/:email", authenticate, UserController.getUserByEmail);
 
 /**
  * @swagger
@@ -150,7 +151,7 @@ router.get("/email/:email", UserController.getUserByEmail);
  *       404:
  *         description: Usuário não encontrado
  */
-router.put("/:id", UserController.updateUser);
+router.put("/:id", authenticate, UserController.updateUser);
 
 /**
  * @swagger
@@ -172,6 +173,6 @@ router.put("/:id", UserController.updateUser);
  *       404:
  *         description: Usuário não encontrado
  */
-router.delete("/:id", UserController.deleteUser);
+router.delete("/:id", authenticate, UserController.deleteUser);
 
 export default router;
