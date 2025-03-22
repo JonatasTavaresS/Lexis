@@ -8,8 +8,8 @@ export class LoanService {
         return await loanRepo.createLoan(bookCopyId, userId, loanDate, returnDate, status);
     }
 
-    async getAllLoans() {
-        return await loanRepo.getAllLoans();
+    async getAllLoans(offset: number, limit: number) {
+        return await loanRepo.getAllLoans(offset, limit);
     }
 
     async getLoan(id: number) {

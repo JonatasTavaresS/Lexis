@@ -24,8 +24,13 @@ export class BookRepository {
         });
     }
 
-    async getAllBooks() {
-        return await Book.findAll();
+    async getAllBooks(offset: number, limit: number) {
+        const { count, rows } = await Book.findAndCountAll({
+            limit,
+            offset,
+        });
+
+        return { books: rows, total: count };
     }
 
     async getBook(id: number) {

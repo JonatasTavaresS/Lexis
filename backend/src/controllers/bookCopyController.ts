@@ -29,10 +29,16 @@ export class BookCopyController {
         }
     }
 
-    static async getAllBookCopies(_: Request, res: Response) {
+    static async getAllBookCopies(req: Request, res: Response) {
         try {
-            const bookCopies = await bookCopyService.getAllBookCopies();
-            res.status(200).json(bookCopies);
+            let { page, limit } = req.query;
+
+            const pageNumber = Math.max(parseInt(page as string) || 1, 1);
+            const limitNumber = Math.min(Math.max(parseInt(limit as string) || 10, 1), 100);
+            const offset = (pageNumber - 1) * limitNumber;
+
+            const { bookCopies, total } = await bookCopyService.getAllBookCopies(offset, limitNumber);
+            res.status(200).json({ bookCopies, total, page: pageNumber, limit: limitNumber });
         }
         catch (error: any) {
             res.status(500).json({ message: "Error retrieving book copies", error: error.message });

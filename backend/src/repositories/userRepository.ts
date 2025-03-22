@@ -18,8 +18,13 @@ export class UserRepository {
         });
     }
 
-    async getAllUsers() {
-        return await User.findAll();
+    async getAllUsers(offset: number, limit: number) {
+        const { count, rows } = await User.findAndCountAll({
+            limit,
+            offset,
+        });
+
+        return { users: rows, total: count };
     }
 
     async getUser(id: number) {

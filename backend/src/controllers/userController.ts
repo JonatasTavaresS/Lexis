@@ -20,10 +20,16 @@ export class UserController {
         }
     }
 
-    static async getAllUsers(_: Request, res: Response) {
+    static async getAllUsers(req: Request, res: Response) {
         try {
-            const users = await userService.getAllUsers();
-            res.status(200).json(users);
+            let { page, limit } = req.query;
+
+            const pageNumber = Math.max(parseInt(page as string) || 1, 1);
+            const limitNumber = Math.min(Math.max(parseInt(limit as string) || 10, 1), 100);
+            const offset = (pageNumber - 1) * limitNumber;
+
+            const { users, total } = await userService.getAllUsers(offset, limitNumber);
+            res.status(200).json({ users, total, page: pageNumber, limit: limitNumber });
         } catch (error: any) {
             res.status(500).json({ message: "Error retrieving users", error: error.message });
         }

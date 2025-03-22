@@ -7,8 +7,8 @@ export class BookService {
         return await bookRepo.createBook(isbn, title, authors, publisher, publishedYear, language, genre, coverImageUrl);
     }
 
-    async getAllBooks() {
-        return await bookRepo.getAllBooks();
+    async getAllBooks(offset: number, limit: number) {
+        return await bookRepo.getAllBooks(offset, limit);
     }
 
     async getBook(id: number) {

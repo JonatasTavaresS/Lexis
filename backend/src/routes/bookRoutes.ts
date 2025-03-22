@@ -67,9 +67,22 @@ router.post("/", BookController.createBook);
  * @swagger
  * /books:
  *   get:
- *     summary: Retorna todos os livros
- *     description: Recupera uma lista de todos os livros cadastrados no sistema.
+ *     summary: Retorna todos os livros com paginação
+ *     description: Recupera uma lista de todos os livros cadastrados no sistema com suporte a paginação.
  *     tags: [Livros]
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *         description: Número da página (começa em 1).
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *         description: Número máximo de livros por página.
  *     responses:
  *       200:
  *         description: Lista de livros recuperada com sucesso

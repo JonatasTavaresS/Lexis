@@ -50,9 +50,22 @@ router.post("/", authenticate, LoanController.createLoan);
  * @swagger
  * /loans:
  *   get:
- *     summary: Retorna todos os empréstimos
- *     description: Lista todos os empréstimos cadastrados no sistema.
+ *     summary: Retorna todos os empréstimos com paginação
+ *     description: Lista todos os empréstimos cadastrados no sistema com suporte a paginação.
  *     tags: [Empréstimos]
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *         description: Número da página (começa em 1).
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *         description: Número máximo de empréstimos por página.
  *     responses:
  *       200:
  *         description: Lista de empréstimos retornada com sucesso

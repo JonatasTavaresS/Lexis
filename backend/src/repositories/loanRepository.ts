@@ -18,8 +18,13 @@ export class LoanRepository {
         });
     }
 
-    async getAllLoans() {
-        return await Loan.findAll();
+    async getAllLoans(offset: number, limit: number) {
+        const { count, rows } = await Loan.findAndCountAll({
+            limit,
+            offset,
+        });
+
+        return { loans: rows, total: count };
     }
 
     async getLoan(id: number) {

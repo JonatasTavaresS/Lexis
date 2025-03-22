@@ -34,10 +34,16 @@ export class BookController {
         }
     }
 
-    static async getAllBooks(_: Request, res: Response) {
+    static async getAllBooks(req: Request, res: Response) {
         try {
-            const books = await bookService.getAllBooks();
-            res.status(200).json(books);
+            let { page, limit } = req.query;
+
+            const pageNumber = Math.max(parseInt(page as string) || 1, 1);
+            const limitNumber = Math.min(Math.max(parseInt(limit as string) || 10, 1), 100);
+            const offset = (pageNumber - 1) * limitNumber;
+
+            const { books, total } = await bookService.getAllBooks(offset, limitNumber);
+            res.status(200).json({ books, total, page: pageNumber, limit: limitNumber });
         } catch (error: any) {
             res.status(500).json({ message: "Error retrieving books", error: error.message });
         }

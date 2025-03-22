@@ -11,8 +11,8 @@ export class UserService {
         return await userRepo.createUser(firstName, lastName, email, hashedPassword, role);
     }
 
-    async getAllUsers() {
-        return await userRepo.getAllUsers();
+    async getAllUsers(offset: number, limit: number) {
+        return await userRepo.getAllUsers(offset, limit);
     }
 
     async getUser(id: number) {

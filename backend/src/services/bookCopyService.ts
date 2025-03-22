@@ -14,8 +14,8 @@ export class BookCopyService {
         return await bookCopyRepo.createBookCopy(bookId, status, condition, acquisitionDate, location);
     }
 
-    async getAllBookCopies() {
-        return await bookCopyRepo.getAllBookCopies();
+    async getAllBookCopies(offset: number, limit: number) {
+        return await bookCopyRepo.getAllBookCopies(offset, limit);
     }
 
     async getBookCopy(id: number) {

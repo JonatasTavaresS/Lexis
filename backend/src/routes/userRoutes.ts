@@ -59,9 +59,22 @@ router.post("/", authenticate, UserController.createUser);
  * @swagger
  * /users:
  *   get:
- *     summary: Retorna todos os usuários
- *     description: Recupera uma lista de todos os usuários cadastrados no sistema.
+ *     summary: Retorna todos os usuários com paginação
+ *     description: Recupera uma lista de usuários cadastrados no sistema com suporte a paginação.
  *     tags: [Usuários]
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *         description: Número da página (começa em 1).
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *         description: Número máximo de usuários por página.
  *     responses:
  *       200:
  *         description: Lista de usuários recuperada com sucesso

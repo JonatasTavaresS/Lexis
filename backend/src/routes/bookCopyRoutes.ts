@@ -59,9 +59,22 @@ router.post("/", authenticate, BookCopyController.createBookCopy);
  * @swagger
  * /bookCopies:
  *   get:
- *     summary: Retorna todas as cópias de livros
- *     description: Recupera uma lista de todas as cópias de livros cadastradas no sistema.
+ *     summary: Retorna todas as cópias de livros com paginação
+ *     description: Recupera uma lista de todas as cópias de livros cadastradas no sistema com suporte a paginação.
  *     tags: [Cópias de Livros]
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *         description: Número da página (começa em 1).
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *         description: Número máximo de exemplares por página.
  *     responses:
  *       200:
  *         description: Lista de cópias de livros recuperada com sucesso

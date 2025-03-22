@@ -17,10 +17,16 @@ export class LoanController {
         }
     }
 
-    static async getAllLoans(_: Request, res: Response) {
+    static async getAllLoans(req: Request, res: Response) {
         try {
-            const loans = await loanService.getAllLoans();
-            res.status(200).json(loans);
+            let { page, limit } = req.query;
+
+            const pageNumber = Math.max(parseInt(page as string) || 1, 1);
+            const limitNumber = Math.min(Math.max(parseInt(limit as string) || 10, 1), 100);
+            const offset = (pageNumber - 1) * limitNumber;
+
+            const { loans, total } = await loanService.getAllLoans(offset, limitNumber);
+            res.status(200).json({ loans, total, page: pageNumber, limit: limitNumber });
         } catch (error: any) {
             res.status(500).json({ message: "Error retrieving loans", error: error.message });
         }

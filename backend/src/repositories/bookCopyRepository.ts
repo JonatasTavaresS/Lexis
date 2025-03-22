@@ -18,8 +18,13 @@ export class BookCopyRepository {
         });
     }
 
-    async getAllBookCopies() {
-        return await BookCopy.findAll();
+    async getAllBookCopies(offset: number, limit: number) {
+        const { count, rows } = await BookCopy.findAndCountAll({
+            limit,
+            offset,
+        });
+
+        return { bookCopies: rows, total: count };
     }
 
     async getBookCopy(id: number) {
