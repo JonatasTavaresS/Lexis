@@ -1,0 +1,63 @@
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px;
+  background: #fff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.button {
+  padding: 8px 15px;
+  background: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.buttonOutline {
+  padding: 8px 15px;
+  background: white;
+  color: black;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+}
+
+.sidebar h3 {
+  margin-top: 15px;
+}
+
+.sidebar input {
+  margin-right: 10px;
+}
+
+/* Book Card */
+.bookCard {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  background: white;
+  border-radius: 8px;
+}
+
+.bookImage {
+  height: 250px;
+  width: auto;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+}

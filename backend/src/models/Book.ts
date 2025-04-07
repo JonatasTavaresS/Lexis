@@ -65,7 +65,7 @@ Book.init(
             defaultValue: [],
         },
         coverImageUrl: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT("long"),
             allowNull: true,
             field: 'cover_image_url',
         },

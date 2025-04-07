@@ -1,3 +1,4 @@
+import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import sequelize from "./config/database";
@@ -11,7 +12,13 @@ import userRoutes from "./routes/userRoutes";
 dotenv.config();
 
 const app = express();
-app.use(express.json());
+app.use(cors({
+  origin: "*",
+  methods: "GET,POST,PUT,DELETE",
+  allowedHeaders: "Content-Type,Authorization"
+}));
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
 app.use("/api/books", bookRoutes);
 app.use("/api/bookCopies", bookCopyRoutes);
